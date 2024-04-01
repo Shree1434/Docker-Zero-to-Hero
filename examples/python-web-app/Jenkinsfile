@@ -8,8 +8,7 @@ pipeline {
   stages {
     stage ('Checkout') {
       steps {
-        git url: https://github.com/shree1434/Docker-Zero-To-Hero
-        branch: main
+        git url: https://github.com/shree1434/Docker-Zero-To-Hero,branch: 'main'
       }
     }
 
@@ -18,7 +17,7 @@ pipeline {
         script {
             sh '''
         echo 'Build Docker Image'
-        docker build -t shree1434/python_django:${BUILD_NUMBER} .
+        docker build -t shree1434/python_django:${IMAGE_TAG} .
         '''
         }
       }
@@ -29,7 +28,7 @@ pipeline {
         script {
             sh '''
             echo 'Push the docker image to repo'
-            docker push shree1434/python_django:${BUILD_NUMBER}
+            docker push shree1434/python_django:${IMAGE_TAG}
             '''
         }
       }
