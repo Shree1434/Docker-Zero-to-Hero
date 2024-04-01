@@ -18,7 +18,7 @@ pipeline {
         script {
             sh '''
         echo 'Build Docker Image'
-        docker build -t shree1434/python_django:${BUILD_NUMBER}
+        docker build -t shree1434/python_django:${BUILD_NUMBER} .
         '''
         }
       }
