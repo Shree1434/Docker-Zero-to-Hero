@@ -19,7 +19,7 @@ pipeline {
         script {
             sh '''
         echo 'Build Docker Image'
-        docker build -t shree1434/python-django:${IMAGE_TAG} .
+        docker.build("shree1434/python-django:${IMAGE_TAG}", "-f /var/lib/jenkins/workspace/django/ .")
         '''
         }
       }
