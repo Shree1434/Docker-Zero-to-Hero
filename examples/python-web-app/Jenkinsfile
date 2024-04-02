@@ -19,7 +19,7 @@ pipeline {
         script {
             sh '''
         echo 'Build Docker Image'
-        docker build -t shree1434/python_django:${IMAGE_TAG} .
+        docker build -t shree1434/python-django:${IMAGE_TAG} .
         '''
         }
       }
@@ -30,7 +30,7 @@ pipeline {
         script {
             sh '''
             echo 'Push the docker image to repo'
-            docker push shree1434/python_django:${IMAGE_TAG}
+            docker push shree1434/python-django:${IMAGE_TAG}
             '''
         }
       }
@@ -43,7 +43,7 @@ pipeline {
             echo 'Deploying to Docker'
             docker stop new-app||true
             docker rm new-app||true
-            docker run -d --name new-app -p 8000:8000 shree1434/python_django:${BUILD_NUMBER}
+            docker run -d --name new-app -p 8000:8000 shree1434/python-django:${BUILD_NUMBER}
             '''
         }
       }
