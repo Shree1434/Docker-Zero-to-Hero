@@ -8,8 +8,9 @@ pipeline {
   stages {
     stage ('Checkout') {
       steps {
-        git url: https://github.com/shree1434/Docker-Zero-To-Hero
-            branch: 'main'
+        git credentialsId: '184b2aa9-6a9a-418f-aca3-11268b2abda8', 
+        url: https://github.com/shree1434/Docker-Zero-To-Hero,
+        branch: 'main'
       }
     }
 
