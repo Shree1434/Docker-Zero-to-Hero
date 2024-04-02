@@ -19,7 +19,7 @@ pipeline {
         script {
             sh '''
             echo 'Build Docker Image'
-            docker.build('shree1434/python-django:${IMAGE_TAG}', '-f examples/python-web-app/Dockerfile .')
+            docker build -t shree1434/python-django:${IMAGE_TAG} -f examples/python-web-app/Dockerfile .
             '''
         }
       }
@@ -41,8 +41,8 @@ pipeline {
         script {
             sh '''
             echo 'Deploying to Docker'
-            docker stop new-app||true
-            docker rm new-app||true
+            docker stop new-app || true
+            docker rm new-app || true
             docker run -d --name new-app -p 8000:8000 shree1434/python-django:${IMAGE_TAG}
             '''
         }
